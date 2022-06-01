@@ -1,0 +1,59 @@
+﻿@model LoginModel
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+<style>
+    .panelLogin {
+        margin-top: 20rem;
+        width: 30%;
+    }
+</style>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Exito"]
+    </div>
+}
+
+<div class="panelLogin container d-flex justify-content-center align-items-center shadow p-3 mb-5 rounded">
+    <form asp-action="Login">
+        <div>
+            <h1>Iniciar sesion</h1>
+        </div>
+
+        <div class="d-flex flex-column">
+            <label class="form-label">Correo</label>
+            <input type="email" class="form-control" asp-for="Correo" />
+        </div>
+
+        <div class="d-flex flex-column">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" asp-for="Password" />
+        </div>
+
+        <div class="d-flex mt-3">
+            <div class="form-check me-3">
+                <input class="form-check-input" type="checkbox" asp-for="Recordar" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Recordar cuenta
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+
+        <div class="bg-light mt-2">
+            <p>No tienes cuenta <a asp-controller="Login" asp-action="CrearCuenta">Registrarse</a> </p>
+        </div>
+    </form>
+</div>

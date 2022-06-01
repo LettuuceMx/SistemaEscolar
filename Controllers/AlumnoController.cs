@@ -54,6 +54,7 @@ namespace SistemaEscolar.Controllers
             ModelState.Remove("crearContactoModel.NumeroInterior");
             if (!ModelState.IsValid)
             {
+                TempData["Error"] = "No deje campos vacios";
                 return View("AltaAlumnos", modeloMultiple);
             }
 
@@ -104,11 +105,14 @@ namespace SistemaEscolar.Controllers
             {
                 modeloMultiple.EditarAlumnoContactoModel = editarAlumnoContactoModel;
                 TempData["idAlumno"] = idAlumno;
+                TempData["Error"] = "No deje campos vacios";
                 return View("EditarAlumno", modeloMultiple);
                 //return RedirectToAction("EditarAlumno", "Alumno", new { IdAlumno = idAlumno });
             }
 
             bool resultado = await iTAlumno.ActualizarDatosAlumno(editarAlumnoContactoModel);
+
+            TempData["Exito"] = $"Tarea completa, se ha actualizado correctamente los datos del alumno{editarAlumnoContactoModel.NombreAlumno + editarAlumnoContactoModel.ApellidoPaternoAlumno + editarAlumnoContactoModel.ApellidoMaternoAlumno}";
 
             return RedirectToAction("AlumnosSeguimiento", "Alumno");
         }

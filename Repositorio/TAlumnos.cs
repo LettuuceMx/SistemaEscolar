@@ -58,7 +58,7 @@ namespace SistemaEscolar.Repositorio
 
             return await conexion.QueryFirstOrDefaultAsync<EditarAlumnoContactoModel>("select Alumno.idAlumno,Alumno.NombreAlumno,Alumno.fechaBaja,Alumno.ApellidoPaternoAlumno,Alumno.ApellidoMaternoAlumno, Alumno.gradoEscolar,Alumno.nivelEducativo, " +
                 "Contactos.idContacto,Contactos.nombreContacto,Contactos.apellidoPaternoContacto,Contactos.apellidoMaternoContacto, Contactos.calle,Contactos.colonia," +
-                "Contactos.numeroExterior,Contactos.numeroInterior, Contactos.telefono,Contactos.codigoPostal,Contactos.estado " +
+                "Contactos.numeroExterior,Contactos.numeroInterior, Contactos.telefono,Contactos.codigoPostal,Contactos.estado,Contactos.parentesco " +
                 "from Alumno inner join Contactos " +
                 "on Alumno.idAlumno = Contactos.idAlumno where Alumno.idAlumno = @IdAlumno", new { IdAlumno });
         }
@@ -79,6 +79,25 @@ namespace SistemaEscolar.Repositorio
         {
             using var conexion = new SqlConnection(_cadenaConexion);
             return await conexion.QueryAsync<AlumnosModel>("SELECT * FROM Alumno inner join Contactos on Alumno.idAlumno = Contactos.idAlumno where Alumno.nivelEducativo = @nivelEducativo", new { nivelEducativo });
+        }
+
+        public async Task<bool> CrearCuentaUsuario(CrearCuenta crearCuenta)
+        {
+            using var conexion = new SqlConnection(_cadenaConexion);
+
+            var resultado = await conexion.QuerySingleAsync<int>("INSERT INTO CUENTAS VALUES (@Correo,@Password);" +
+                "SELECT SCOPE_IDENTITY();", crearCuenta);
+
+            return true;
+        }
+
+        public async Task<bool> LoginCuenta(LoginModel loginModel)
+        {
+            using var conexion = new SqlConnection(_cadenaConexion);
+
+            var resultado = await conexion.QueryFirstOrDefaultAsync<bool>(@"select * from Cuentas where Correo = @Correo and Password = @Password", loginModel);
+
+            return resultado;
         }
 
         //using var conexion = new SqlConnection(_cadenaConexion);

@@ -1,7 +1,22 @@
 ﻿@model ModeloMultiple
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Home Page";
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Exito"]
+    </div>
 }
 
 <div class="d-flex mt-2 mb-2">
@@ -185,6 +200,13 @@
                             <div class="d-flex d-inline">
                                 <h4 class="me-2 text-decoration-underline">Estado</h4>
                                 <h4 class="text-danger">@item.Estado</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Parentesco</h4>
+                                <h4 class="text-danger">@item.Parentesco</h4>
                             </div>
                         </div>
                     </div>

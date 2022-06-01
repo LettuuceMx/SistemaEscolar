@@ -1,6 +1,7 @@
 ﻿@model ModeloMultiple
 
 @{
+    Layout = "_Layout";
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,6 +11,20 @@
         width: 90%;
     }
 </style>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Error"]
+    </div>
+}
+
+@if (TempData["Exito"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["Exito"]
+    </div>
+}
 
 <section>
     <div>
@@ -153,7 +168,7 @@
                     <div class="m-2">
                         <label for="parentesco" class="form-label">Parentesco</label>
                         <select class="form-select" asp-for="EditarAlumnoContactoModel.Parentesco">
-                            <option selected>Madre</option>
+                            <option>Madre</option>
                             <option>Padre</option>
                             <option>Hermano</option>
                             <option>Hermana</option>

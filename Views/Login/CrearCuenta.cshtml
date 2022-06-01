@@ -1,0 +1,38 @@
+﻿@model CrearCuenta
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["Error"]
+    </div>
+}
+
+
+<div>
+    <form asp-controller="Login" asp-action="CrearCuentaRegistro">
+        <h1>Crear cuenta</h1>
+
+        <div class="d-flex flex-column">
+            <label class="form-label">Correo</label>
+            <input class="form-control" type="email" asp-for="Correo" />
+        </div>
+
+        <div class="d-flex flex-column">
+            <label class="form-label">Contraseña</label>
+            <input class="form-control" type="password" asp-for="Password" />
+        </div>
+
+        <div class="d-flex flex-column">
+            <label class="form-label">Confirmar contraseña</label>
+            <input class="form-control" type="password" asp-for="ConfirmarPassword" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Crear cuenta</button>
+    </form>
+</div>
