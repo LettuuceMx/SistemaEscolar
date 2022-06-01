@@ -12,7 +12,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Inicio</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">Inicio</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" asp-controller="Alumno" asp-action="AltaAlumnos">Alta Alumno</a>
-                    <a class="nav-link" href="#">Actualizar Alumnos</a>
+                    <a class="nav-link" asp-controller="Alumno" asp-action="AlumnosSeguimiento">Seguimiento de Alumnos</a>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@
     <header>
     </header>
 
-    <div class="container">
+    <div class="container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

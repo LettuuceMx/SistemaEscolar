@@ -1,0 +1,197 @@
+﻿@model ModeloMultiple
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex mt-2 mb-2">
+    <form asp-action="FiltroGradoEscolar">
+        <div class="d-flex">
+            <div class="d-flex">
+                <label class="form-label">Grado escolar</label>
+
+                <select class="form-select" name="gradoEscolar">
+                    <option></option>
+                    <option>Primaria</option>
+                    <option>Secundario</option>
+                    <option>Bachillerato</option>
+                    <option>Licenciatura</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <form asp-action="FiltroNivelEducativo">
+        <div class="d-flex">
+            <div class="d-flex">
+                <label class="form-label">Nivel educativo</label>
+
+                <select class="form-select" name="nivelEducativo">
+                    <option></option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>Año</option>
+                    <option>Semestre</option>
+                    <option>Cuatrimestre</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </form>
+
+    <a class="btn btn-primary" asp-action="AlumnosSeguimiento">Eliminar filtros</a>
+</div>
+
+<div class="container-fluid">
+    <div class="d-flex flex-column align-items-center">
+        @foreach (var item in Model.IEnumerableAlumnos)
+        {
+            <div class="d-flex mt-2 bg-light shadow p-3 mb-5 rounded w-50">
+                <section class="m-2">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <circle cx="12" cy="7" r="4" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                        </svg>
+
+                        <h2>Datos del alumno</h2>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Matricula</h4>
+                                <h4 class="text-danger">@item.Matricula</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Curp</h4>
+                                <h4 class="text-danger">@item.NombreAlumno @item.ApellidoPaternoAlumno @item.ApellidoMaternoAlumno</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Nombre</h4>
+                                <h4 class="text-danger">@item.Curp</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Fecha de ingreso</h4>
+                                <h4 class="text-danger">@item.FechaIngreso.ToString("dd/MMMM/yyyy")</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Fecha de baja</h4>
+                                <h4 class="text-danger">@item.FechaBaja</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Estatus</h4>
+                                <h4 class="text-danger">@item.Estatus</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Grado escolar</h4>
+                                <h4 class="text-danger">@item.GradoEscolar</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Nivel academico</h4>
+                                <h4 class="text-danger">@item.NivelEducativo</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="m-2">
+                    <div class="d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-phone" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+                        </svg>
+
+                        <h2>Datos de contacto</h2>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Nombre del contacto</h4>
+                                <h4 class="text-danger">@item.NombreContacto @item.ApellidoPaternoContacto @item.ApellidoMaternoContacto</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Telefono</h4>
+                                <h4 class="text-danger">@item.Telefono</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Calle</h4>
+                                <h4 class="text-danger">@item.Calle</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Colonia</h4>
+                                <h4 class="text-danger">@item.Colonia</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Numero exterior</h4>
+                                <h4 class="text-danger">@item.NumeroExterior</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Numero interior</h4>
+                                <h4 class="text-danger">@item.NumeroInterior</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Codigo postal</h4>
+                                <h4 class="text-danger">@item.CodigoPostal</h4>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="d-flex d-inline">
+                                <h4 class="me-2 text-decoration-underline">Estado</h4>
+                                <h4 class="text-danger">@item.Estado</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <a asp-action="EditarAlumno" asp-route-IdAlumno="@item.IdAlumno">Editar información</a>
+            </div>
+        }
+    </div>
+</div>

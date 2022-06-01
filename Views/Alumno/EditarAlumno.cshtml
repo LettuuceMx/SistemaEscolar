@@ -1,0 +1,181 @@
+﻿@model ModeloMultiple
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .panelForm {
+        height: auto;
+        width: 90%;
+    }
+</style>
+
+<section>
+    <div>
+        <h1>
+            Información del alumno @Model?.EditarAlumnoContactoModel.NombreAlumno
+            @Model?.EditarAlumnoContactoModel.ApellidoPaternoAlumno @Model?.EditarAlumnoContactoModel.ApellidoMaternoAlumno
+        </h1>
+    </div>
+
+    <form asp-action="ActualizarDatosAlumno" asp-controller="Alumno">
+        <div class="d-flex">
+            <section class="ms-3 shadow p-3 mb-5 rounded">
+                <div>
+                    <h2>Datos alumno</h2>
+
+                    @*input grado escolar*@
+                    <div class="m-2">
+                        <label for="gradoEscolar" class="form-label">Grado Escolar*</label>
+                        <select asp-for="EditarAlumnoContactoModel.GradoEscolar" class="form-select" id="gradoEscolar">
+                            <option selected>Primaria</option>
+                            <option>Secundaria</option>
+                            <option>Bachillerato</option>
+                            <option>Licenciatura</option>
+                        </select>
+                        <span asp-validation-for="EditarAlumnoContactoModel.GradoEscolar" class="text-danger"></span>
+                    </div>
+
+                    @*input nivel educativo*@
+                    <div class="m-2">
+                        <label for="gradoEducativo" class="form-label">Nivel Educativo*</label>
+                        <select asp-for="EditarAlumnoContactoModel.NivelEducativo" class="form-select" id="gradoEducativo">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>Semestre</option>
+                            <option>Cuatrimestre</option>
+                        </select>
+                        <span asp-validation-for="EditarAlumnoContactoModel.NivelEducativo" class="text-danger"></span>
+                    </div>
+
+                    @*fecha de baja*@
+                    <div class="m-2">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" checked id="flexCheckDefault"
+                                   asp-for="EditarAlumnoContactoModel.estaDeBaja" onclick="activarFechaBaja()">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                ¿Esta de baja?
+                            </label>
+                        </div>
+
+                        <div id="contBaja">
+                            <label for="fechaBaja" class="form-label">Fecha de baja</label>
+                            <input type="text" asp-for="EditarAlumnoContactoModel.FechaBaja" class="form-control" id="fechaBaja" />
+                            <span asp-validation-for="EditarAlumnoContactoModel.GradoEscolar" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="m-2">
+                        <button type="submit" class="btn btn-primary">Alta de alumno</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panelForm ms-3 shadow p-3 mb-5 rounded">
+                <h2>Datos de Contacto</h2>
+
+                <div>
+                    @*nombre*@
+                    <div class="m-2">
+                        <label for="nombreContacto" class="form-label">Nombre del contacto</label>
+                        <input asp-for="EditarAlumnoContactoModel.NombreContacto" type="text" placeholder="Ingrese el nombre*" id="nombreContacto" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.NombreContacto" class="text-danger"></span>
+                    </div>
+
+                    @*ApellidoPaterno*@
+                    <div class="m-2">
+                        <label for="apellidoPaternoContactp" class="form-label">Apellido paterno del contacto</label>
+                        <input asp-for="EditarAlumnoContactoModel.ApellidoPaternoContacto" type="text" placeholder="Ingrese apellido paterno*" id="apellidoPaternoContactp" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.ApellidoPaternoContacto" class="text-danger"></span>
+                    </div>
+
+                    @*ApellidoMaterno*@
+                    <div class="m-2">
+                        <label for="apellidoMaternoContacto" class="form-label">Apellido materno del contacto</label>
+                        <input asp-for="EditarAlumnoContactoModel.ApellidoMaternoContacto" type="text" placeholder="Ingrese apellido materno*" id="apellidoMaternoContacto" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.ApellidoMaternoContacto" class="text-danger"></span>
+                    </div>
+
+                    @*telefono*@
+                    <div class="m-2">
+                        <label for="numeroContacto" class="form-label">Telefono o numero de contacto</label>
+                        <input asp-for="EditarAlumnoContactoModel.Telefono" type="tel" placeholder="Ingrese el numero*" id="numeroContacto" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.Telefono" class="text-danger"></span>
+                    </div>
+
+                    @*calle*@
+                    <div class="m-2">
+                        <label for="calle" class="form-label">Calle</label>
+                        <input asp-for="EditarAlumnoContactoModel.Calle" type="text" placeholder="Ingrese el numero*" id="calle" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.Calle" class="text-danger"></span>
+                    </div>
+
+                    @*Colonia*@
+                    <div class="m-2">
+                        <label for="colonia" class="form-label">Colonia</label>
+                        <input asp-for="EditarAlumnoContactoModel.Colonia" type="text" placeholder="Ingrese la colonia*" id="colonia" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.Colonia" class="text-danger"></span>
+                    </div>
+
+                    @*numero exterior*@
+                    <div class="m-2">
+                        <label for="numeroExterior" class="form-label">Numero Exterior</label>
+                        <input asp-for="EditarAlumnoContactoModel.NumeroExterior" type="text" placeholder="Ingrese el numero exterior*" id="numeroExterior" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.NumeroExterior" class="text-danger"></span>
+                    </div>
+
+                    @*numero interior*@
+                    <div class="m-2">
+                        <label for="numeroInterior" class="form-label">Numero Interior</label>
+                        <input asp-for="EditarAlumnoContactoModel.NumeroInterior" type="text" placeholder="Ingrese el numero interior" id="numeroInterior" class="form-control" />
+                    </div>
+
+                    @*codigo postal*@
+                    <div class="m-2">
+                        <label for="codigoPostal" class="form-label">Codigo Postal</label>
+                        <input asp-for="EditarAlumnoContactoModel.CodigoPostal" type="number" placeholder="Codigo postal*" id="codigoPostal" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.CodigoPostal" class="text-danger"></span>
+                    </div>
+
+                    @*estado*@
+                    <div class="m-2">
+                        <label for="calle" class="form-label">Estado</label>
+                        <input asp-for="EditarAlumnoContactoModel.Estado" type="text" placeholder="Ingrese el numero*" id="calle" class="form-control" />
+                        <span asp-validation-for="EditarAlumnoContactoModel.Estado" class="text-danger"></span>
+                    </div>
+
+                    @*parentesco*@
+                    <div class="m-2">
+                        <label for="parentesco" class="form-label">Parentesco</label>
+                        <select class="form-select" asp-for="EditarAlumnoContactoModel.Parentesco">
+                            <option selected>Madre</option>
+                            <option>Padre</option>
+                            <option>Hermano</option>
+                            <option>Hermana</option>
+                            <option>Familiar</option>
+                        </select>
+                        <span asp-validation-for="EditarAlumnoContactoModel.Parentesco" class="text-danger"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</section>
+
+<script>
+    function activarFechaBaja(){
+        var check = document.getElementById("flexCheckDefault");
+        var inputBaja = document.getElementById("contBaja");
+
+        if(check.checked === true){
+            inputBaja.hidden = false;
+        }else{
+            inputBaja.hidden = true;
+        }
+    }
+</script>

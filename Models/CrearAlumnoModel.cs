@@ -5,13 +5,13 @@ namespace SistemaEscolar.Models
     public class CrearAlumnoModel
     {
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public string Nombre { get; set; }
+        public string NombreAlumno { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public string ApellidoPaterno { get; set; }
+        public string ApellidoPaternoAlumno { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public string ApellidoMaterno { get; set; }
+        public string ApellidoMaternoAlumno { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public string Matricula { get; set; }
@@ -22,7 +22,7 @@ namespace SistemaEscolar.Models
         [Display(Name = "Fecha Ingreso")]
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "El campo {0} es requerido")]
-        public DateTime FechaIngreso { get; set; }
+        public DateTime FechaIngreso { get; set; } = DateTime.Today; 
 
         [Required(ErrorMessage = "El campo {0} es requerido")]
         public string Estatus { get; set; }

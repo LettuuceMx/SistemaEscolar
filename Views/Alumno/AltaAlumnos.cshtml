@@ -26,22 +26,22 @@
                     @*input nombre*@
                     <div class="m-2">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input asp-for="CrearAlumnoModel.Nombre" type="text" placeholder="Ingrese el nombre*" id="nombre" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.Nombre" class="text-danger"></span>
+                        <input asp-for="CrearAlumnoModel.NombreAlumno" type="text" placeholder="Ingrese el nombre*" id="nombre" class="form-control" />
+                        <span asp-validation-for="CrearAlumnoModel.NombreAlumno" class="text-danger"></span>
                     </div>
 
                     @*input apellidP*@
                     <div class="m-2">
                         <label for="apellidop" class="form-label">Apellido Paterno</label>
-                        <input asp-for="CrearAlumnoModel.ApellidoPaterno" type="text" placeholder="Ingrese el apellido paterno*" id="apellidop" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.ApellidoPaterno" class="text-danger"></span>
+                        <input asp-for="CrearAlumnoModel.ApellidoPaternoAlumno" type="text" placeholder="Ingrese el apellido paterno*" id="apellidop" class="form-control" />
+                        <span asp-validation-for="CrearAlumnoModel.ApellidoPaternoAlumno" class="text-danger"></span>
                     </div>
 
                     @*input apellidM*@
                     <div class="m-2">
                         <label for="apellidom" class="form-label">Apellido Materno</label>
-                        <input asp-for="CrearAlumnoModel.ApellidoMaterno" type="text" placeholder="Ingrese el apellido materno*" id="apellidom" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.ApellidoMaterno" class="text-danger"></span>
+                        <input asp-for="CrearAlumnoModel.ApellidoMaternoAlumno" type="text" placeholder="Ingrese el apellido materno*" id="apellidom" class="form-control" />
+                        <span asp-validation-for="CrearAlumnoModel.ApellidoMaternoAlumno" class="text-danger"></span>
                     </div>
 
                     @*input matricula*@
@@ -97,6 +97,7 @@
                             <option>4</option>
                             <option>5</option>
                             <option>6</option>
+                            <option>Año</option>
                             <option>Semestre</option>
                             <option>Cuatrimestre</option>
                         </select>
@@ -116,22 +117,22 @@
                     @*nombre*@
                     <div class="m-2">
                         <label for="nombreContacto" class="form-label">Nombre del contacto</label>
-                        <input asp-for="CrearContactoModel.Nombre" type="text" placeholder="Ingrese el nombre*" id="nombreContacto" class="form-control" />
-                        <span asp-validation-for="CrearContactoModel.Nombre" class="text-danger"></span>
+                        <input asp-for="CrearContactoModel.NombreContacto" type="text" placeholder="Ingrese el nombre*" id="nombreContacto" class="form-control" />
+                        <span asp-validation-for="CrearContactoModel.NombreContacto" class="text-danger"></span>
                     </div>
 
                     @*ApellidoPaterno*@
                     <div class="m-2">
                         <label for="apellidoPaternoContactp" class="form-label">Apellido paterno del contacto</label>
-                        <input asp-for="CrearContactoModel.ApellidoPaterno" type="text" placeholder="Ingrese apellido paterno*" id="apellidoPaternoContactp" class="form-control" />
-                        <span asp-validation-for="CrearContactoModel.ApellidoPaterno" class="text-danger"></span>
+                        <input asp-for="CrearContactoModel.ApellidoPaternoContacto" type="text" placeholder="Ingrese apellido paterno*" id="apellidoPaternoContactp" class="form-control" />
+                        <span asp-validation-for="CrearContactoModel.ApellidoPaternoContacto" class="text-danger"></span>
                     </div>
 
                     @*ApellidoMaterno*@
                     <div class="m-2">
                         <label for="apellidoMaternoContacto" class="form-label">Apellido materno del contacto</label>
-                        <input asp-for="CrearContactoModel.ApellidoMaterno" type="text" placeholder="Ingrese apellido materno*" id="apellidoMaternoContacto" class="form-control" />
-                        <span asp-validation-for="CrearContactoModel.ApellidoMaterno" class="text-danger"></span>
+                        <input asp-for="CrearContactoModel.ApellidoMaternoContacto" type="text" placeholder="Ingrese apellido materno*" id="apellidoMaternoContacto" class="form-control" />
+                        <span asp-validation-for="CrearContactoModel.ApellidoMaternoContacto" class="text-danger"></span>
                     </div>
 
                     @*telefono*@
