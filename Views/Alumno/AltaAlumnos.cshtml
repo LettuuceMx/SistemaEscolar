@@ -212,15 +212,15 @@
 
                     @*estado*@
                     <div class="m-2">
-                        <label for="calle" class="form-label">Estado</label>
-                        <input asp-for="CrearContactoModel.Estado" type="text" placeholder="Ingrese el numero*" id="calle" class="form-control" />
+                        <label for="estado" class="form-label">Estado</label>
+                        <input asp-for="CrearContactoModel.Estado" type="text" placeholder="Ingrese el numero*" id="estado" class="form-control" />
                         <span asp-validation-for="CrearContactoModel.Estado" class="text-danger"></span>
                     </div>
 
                     @*parentesco*@
                     <div class="m-2">
                         <label for="parentesco" class="form-label">Parentesco</label>
-                        <select class="form-select" asp-for="CrearContactoModel.Parentesco">
+                        <select class="form-select" id="parentesco" asp-for="CrearContactoModel.Parentesco">
                             <option selected>Madre</option>
                             <option>Padre</option>
                             <option>Hermano</option>
