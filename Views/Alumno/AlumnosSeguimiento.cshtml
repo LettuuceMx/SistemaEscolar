@@ -65,10 +65,10 @@
     <a class="btn btn-primary" asp-action="AlumnosSeguimiento">Eliminar filtros</a>
 </div>
 
-<div class="container d-flex flex-wrap justify-content-center">
+<div class="container-fluid d-flex flex-wrap justify-content-center">
     @foreach (var alumno in Model.IEnumerableAlumnos)
     {
-        <div class="d-flex flex-column border border-success">
+        <div class="d-flex flex-column border border-success m-2">
             <div class="d-flex flex-row mb-2 bg-light p-1">
                 <h3 class="fw-bold text-black me-3">Resumen</h3>
                 <a asp-action="EditarAlumno" asp-route-IdAlumno="@alumno.IdAlumno" class="btn btn-primary ms-4">Editar información</a>

@@ -2,6 +2,6 @@
 {
     public class ConexionSql
     {
-        public static string conexionBaseDatos = "Ahmed";
+        public static string conexionBaseDatos = "Server";
     }
 }

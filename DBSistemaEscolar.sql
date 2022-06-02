@@ -36,7 +36,7 @@ colonia varchar(20) not null,
 numeroExterior varchar(15) not null,
 numeroInterior varchar(15) null,
 codigoPostal varchar (10) not null,
-estado varchar(10) not null,
+estado varchar(max) not null,
 parentesco varchar(30) not null
 
 CONSTRAINT fkidContacto
