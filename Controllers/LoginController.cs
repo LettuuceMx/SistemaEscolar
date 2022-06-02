@@ -44,7 +44,7 @@ namespace SistemaEscolar.Controllers
                 return View("IniciarSesion", loginModel);
             }
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("AlumnosSeguimiento", "Alumno");
         }
 
         [HttpPost]
@@ -53,6 +53,17 @@ namespace SistemaEscolar.Controllers
 
             if (!ModelState.IsValid)
             {
+                return View("CrearCuenta", crearCuenta);
+            }
+
+            crearCuenta.Correo.Trim();
+
+            bool existeCorreo = await tAlumno.ExisteCorreo(crearCuenta.Correo);
+
+            if (existeCorreo)
+            {
+                TempData["Error"] = "Ya existe una cuenta registrada con este correo";
+
                 return View("CrearCuenta", crearCuenta);
             }
 

@@ -6,9 +6,19 @@
 }
 
 <style>
-    .panelForm {
+    .panelAlumno {
+        width: auto;
+        max-height: 600px;
         height: auto;
-        width: 90%;
+        background-color: white;
+    }
+
+    .panelContacto {
+        background-color: white;
+    }
+
+    .btnCrear {
+        width: 100%;
     }
 </style>
 
@@ -26,106 +36,115 @@
     </div>
 }
 
-<section class="mt-5">
-    <h1>Alta de alumno</h1>
-</section>
-
 <div class="mt-5">
     <form asp-controller="Alumno" asp-action="CrearAlumno">
         <div class="d-flex justify-content-center">
-            <section class="panelForm me-3 shadow p-3 mb-5 rounded">
+            <section class="panelAlumno me-3 shadow p-3 mb-5 rounded">
                 <h2>Datos del Alumno</h2>
 
-                @*contenedor de inputs*@
+                @*contenedor de inputs nombres*@
                 <div>
                     @*input nombre*@
-                    <div class="m-2">
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input asp-for="CrearAlumnoModel.NombreAlumno" type="text" placeholder="Ingrese el nombre*" id="nombre" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.NombreAlumno" class="text-danger"></span>
+                    <div>
+                        <div class="d-inline-flex align-content-between m-2">
+                            <div class="m-2">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input asp-for="CrearAlumnoModel.NombreAlumno" type="text" placeholder="Ingrese el nombre*" id="nombre" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.NombreAlumno" class="text-danger"></span>
+                            </div>
+
+                            @*input apellidP*@
+                            <div class="m-2">
+                                <label for="apellidop" class="form-label">Apellido Paterno</label>
+                                <input asp-for="CrearAlumnoModel.ApellidoPaternoAlumno" type="text" placeholder="Ingrese el apellido paterno*" id="apellidop" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.ApellidoPaternoAlumno" class="text-danger"></span>
+                            </div>
+
+                            @*input apellidM*@
+                            <div class="m-2">
+                                <label for="apellidom" class="form-label">Apellido Materno</label>
+                                <input asp-for="CrearAlumnoModel.ApellidoMaternoAlumno" type="text" placeholder="Ingrese el apellido materno*" id="apellidom" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.ApellidoMaternoAlumno" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
 
-                    @*input apellidP*@
-                    <div class="m-2">
-                        <label for="apellidop" class="form-label">Apellido Paterno</label>
-                        <input asp-for="CrearAlumnoModel.ApellidoPaternoAlumno" type="text" placeholder="Ingrese el apellido paterno*" id="apellidop" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.ApellidoPaternoAlumno" class="text-danger"></span>
+                    <div>
+                        <div class="d-inline-flex align-content-between m-2">
+                            @*input matricula*@
+                            <div class="m-2">
+                                <label for="matricula" class="form-label">Matricula</label>
+                                <input asp-for="CrearAlumnoModel.Matricula" type="text" placeholder="Ingrese la matricula*" id="matricula" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.Matricula" class="text-danger"></span>
+                            </div>
+
+                            @*input curp*@
+                            <div class="m-2">
+                                <label for="curp" class="form-label">Curp</label>
+                                <input asp-for="CrearAlumnoModel.Curp" type="text" placeholder="Ingrese el curp*" id="curp" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.Curp" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
 
-                    @*input apellidM*@
-                    <div class="m-2">
-                        <label for="apellidom" class="form-label">Apellido Materno</label>
-                        <input asp-for="CrearAlumnoModel.ApellidoMaternoAlumno" type="text" placeholder="Ingrese el apellido materno*" id="apellidom" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.ApellidoMaternoAlumno" class="text-danger"></span>
+                    <div>
+                        <div class="d-inline-flex align-content-between m-2">
+                            @*input fecha ingreso*@
+                            <div class="m-2">
+                                <label for="fechaIngreso" class="form-label">Fecha de ingreso*</label>
+                                <input asp-for="CrearAlumnoModel.FechaIngreso" id="fechaIngreso" class="form-control" />
+                                <span asp-validation-for="CrearAlumnoModel.FechaIngreso" class="text-danger"></span>
+                            </div>
+
+                            @*input estatus*@
+                            <div class="m-2">
+                                <label for="estatus" class="form-label">Estatus*</label>
+                                <select asp-for="CrearAlumnoModel.Estatus" class="form-select" id="estatus">
+                                    <option selected>Vigente</option>
+                                    <option>Baja</option>
+                                </select>
+                                <span asp-validation-for="CrearAlumnoModel.Estatus" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
 
-                    @*input matricula*@
-                    <div class="m-2">
-                        <label for="matricula" class="form-label">Matricula</label>
-                        <input asp-for="CrearAlumnoModel.Matricula" type="text" placeholder="Ingrese la matricula*" id="matricula" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.Matricula" class="text-danger"></span>
+                    <div>
+                        @*input grado escolar*@
+                        <div class="d-inline-flex m-2">
+                            <div class="m-2">
+                                <label for="gradoEscolar" class="form-label">Grado Escolar*</label>
+                                <select asp-for="CrearAlumnoModel.GradoEscolar" class="form-select" id="gradoEscolar">
+                                    <option selected>Primaria</option>
+                                    <option>Secundaria</option>
+                                    <option>Bachillerato</option>
+                                    <option>Licenciatura</option>
+                                </select>
+                                <span asp-validation-for="CrearAlumnoModel.GradoEscolar" class="text-danger"></span>
+                            </div>
+
+                            <div class="m-2">
+                                <label for="gradoEducativo" class="form-label">Nivel Educativo*</label>
+                                <select asp-for="CrearAlumnoModel.NivelEducativo" class="form-select" id="gradoEducativo">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>Año</option>
+                                    <option>Semestre</option>
+                                    <option>Cuatrimestre</option>
+                                </select>
+                                <span asp-validation-for="CrearAlumnoModel.NivelEducativo" class="text-danger"></span>
+                            </div>
+                        </div>
                     </div>
 
-                    @*input curp*@
-                    <div class="m-2">
-                        <label for="curp" class="form-label">Curp</label>
-                        <input asp-for="CrearAlumnoModel.Curp" type="text" placeholder="Ingrese el curp*" id="curp" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.Curp" class="text-danger"></span>
-                    </div>
-
-                    @*input fecha ingreso*@
-                    <div class="m-2">
-                        <label for="fechaIngreso" class="form-label">Fecha de ingreso*</label>
-                        <input asp-for="CrearAlumnoModel.FechaIngreso" id="fechaIngreso" class="form-control" />
-                        <span asp-validation-for="CrearAlumnoModel.FechaIngreso" class="text-danger"></span>
-                    </div>
-
-                    @*input estatus*@
-                    <div class="m-2">
-                        <label for="estatus" class="form-label">Estatus*</label>
-                        <select asp-for="CrearAlumnoModel.Estatus" class="form-select" id="estatus">
-                            <option selected>Vigente</option>
-                            <option>Baja</option>
-                        </select>
-                        <span asp-validation-for="CrearAlumnoModel.Estatus" class="text-danger"></span>
-                    </div>
-
-                    @*input grado escolar*@
-                    <div class="m-2">
-                        <label for="gradoEscolar" class="form-label">Grado Escolar*</label>
-                        <select asp-for="CrearAlumnoModel.GradoEscolar" class="form-select" id="gradoEscolar">
-                            <option selected>Primaria</option>
-                            <option>Secundaria</option>
-                            <option>Bachillerato</option>
-                            <option>Licenciatura</option>
-                        </select>
-                        <span asp-validation-for="CrearAlumnoModel.GradoEscolar" class="text-danger"></span>
-                    </div>
-
-                    @*input nivel educativo*@
-                    <div class="m-2">
-                        <label for="gradoEducativo" class="form-label">Nivel Educativo*</label>
-                        <select asp-for="CrearAlumnoModel.NivelEducativo" class="form-select" id="gradoEducativo">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>Año</option>
-                            <option>Semestre</option>
-                            <option>Cuatrimestre</option>
-                        </select>
-                        <span asp-validation-for="CrearAlumnoModel.NivelEducativo" class="text-danger"></span>
-                    </div>
-
-                    <div class="m-2">
-                        <button type="submit" class="btn btn-primary">Alta de alumno</button>
-                    </div>
+                    <button type="submit" class="btn btnCrear btn-primary m-2">Alta de alumno</button>
                 </div>
             </section>
 
-            <section class="panelForm ms-3 shadow p-3 mb-5 rounded">
+            <section class="panelContacto ms-3 shadow p-3 mb-5 rounded">
                 <h2>Datos de Contacto</h2>
 
                 <div>

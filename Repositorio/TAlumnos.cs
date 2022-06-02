@@ -100,6 +100,15 @@ namespace SistemaEscolar.Repositorio
             return resultado;
         }
 
+        public async Task<bool> ExisteCorreo(string correo)
+        {
+            using var conexion = new SqlConnection(_cadenaConexion);
+
+            var resultado = await conexion.QueryFirstOrDefaultAsync<bool>("SELECT * FROM CUENTAS where Correo = @Correo", new { correo });
+
+            return resultado;
+        }
+
         //using var conexion = new SqlConnection(_cadenaConexion);
     }
 }
